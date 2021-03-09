@@ -1,0 +1,39 @@
+{%  extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <p>{{ post.text|linebreaks }}</p>
+
+    {% if request.user.is_authenticated %}
+    <form method="post" action="">{% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="commit">
+    </form>
+    {% endif %}
+
+
+         <p>for commnting you should login</p>
+
+
+    <p>
+
+    {% for u in comments %}
+       <p> {{ u.body }}<br>
+       <b> {{ u.posted_by }}</b></p>
+    {% endfor %}
+    {% if new_comment %}
+        <p>your comment add</p>
+    {% endif %}
+
+    </p>
+
+{% endblock %}
+
+</body>
+</html>

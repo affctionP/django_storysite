@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+<h1>{{ request.user.first_name }}</h1>
+
+    {%  if request.user.is_writer %}
+        <p> {{request.user.first_name }} you can write by click
+            <a href="{%  url 'posts:posting' %}">here</a></p>
+
+    {% endif %}
+    <a href="{% url 'accounts:profile' %}">edit your profile</a>
+            {{request.user.bio  }}
+
+    {% if request.user.avatar %}
+        <img src="{{ request.user.avatar.url }}" class="avatar"/>
+    {% endif %}
+
+    <p>you can log out by click <a href="{% url 'accounts:logout' %}">logout</a></p>
+
+
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{%  block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link  rel="stylesheet" href="{% static "css/base.css" %}?ver=2" type="text/css">
+
+
+
+</head>
+<body>
+<div id="header">
+    <span class="logo">TELL YOUR SYORY</span>
+
+        <ul class="menu">
+        <li {% if section == home%}class="selected"{% endif %}><a href="{% url 'pages:home' %}">خانه</a></li>
+        {% if request.user.is_authenticated %}
+            <li {% if section == profile %}class="selected"{% endif %}>
+        <a href="{% url 'accounts:dashboard' %}">پروفایل</a>
+        </li>
+        <li{% if section == about  %} class="selected"{% endif  %}>
+        <a href="#">about</a>
+        </li>
+        </ul>
+    {% endif %}
+
+</div>
+{% block content %}
+
+{% endblock %}

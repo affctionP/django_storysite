@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <p>hello this is profile</p>
+<form method="post" enctype="multipart/form-data">
+{{ form.as_p }}
+{% csrf_token %}
+
+    <input type="hidden" value="{{ username }}">
+<input type="submit" value="edit">
+</form>
+{% endblock %}
+</body>
+</html>

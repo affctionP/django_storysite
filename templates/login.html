@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+    <main>
+    <div class="wrapper">
+        <form method="post" class="login">
+                  {% csrf_token %}
+               {{ form.as_p }}
+             <input type="submit" value="log in">
+            <br>
+            <span><a href="{% url 'account:password_reset' %}">forget password</a></span>
+
+
+         </form>
+
+
+    </div>
+    </main>
+
+
+{% endblock %}
+
+</body>
+</html>>

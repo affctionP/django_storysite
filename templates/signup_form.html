@@ -1,0 +1,40 @@
+{% extends 'base.html ' %}
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+
+
+        Title{% endblock %}</title>
+
+</head>
+<body>
+
+
+{% block content %}
+
+
+<div class="form">
+    <div class="container">
+    <div class="row">
+        <header class="col-md-12 text-center">
+            <h1>sign up as {{ user_type }}</h1>
+        </header>
+    <div class="col-md-6 col-sm-10 col-12">
+        <form method="post">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <input type="submit" value="signup">
+
+</form>
+    </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
